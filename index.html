@@ -83,6 +83,12 @@ tr.grp td{border-top:2px solid var(--line)}
 .na{color:var(--muted);font-family:var(--f-ui);font-size:.78rem}
 td a{color:var(--fb)}
 .pg{font-weight:600}
+.datebar{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.datebar .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.range{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.86rem;color:var(--muted)}
+.range input{font:inherit;font-size:.86rem;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.dchip{display:block;font-size:.74rem;color:var(--muted);font-weight:500;font-family:var(--f-num)}
+.empty{padding:24px;text-align:center;color:var(--muted)}
 footer{font-size:.8rem;color:var(--muted);display:grid;gap:4px}
 </style>
 </head>
@@ -92,31 +98,26 @@ footer{font-size:.8rem;color:var(--muted);display:grid;gap:4px}
 <div class="wrap">
   <header>
     <div class="eyebrow">Báo cáo Truyền Thông kênh IND · OPPO Tiền Giang</div>
-    <h1>Bài đăng ngày 4/10/2026</h1>
-    <p class="sub">Tổng hợp từ sheet “link bài đăng T10”, tab 4/10. Số liệu lấy trực tiếp từ TikTok và Facebook lúc khoảng 19h–20h ngày 4/10.</p>
+    <h1 id="title">Bài đăng ngày 4/10/2026</h1>
+    <p class="sub">Tổng hợp từ sheet “link bài đăng T10”, mỗi tab là một ngày báo cáo. Số liệu lấy trực tiếp từ TikTok và Facebook lúc khoảng 19h–20h ngày 4/10.</p>
   </header>
+
+  <section class="datebar" aria-label="Lọc theo ngày">
+    <span class="lbl">Lọc ngày</span>
+    <div class="chips" id="dchips" role="group" aria-label="Chọn ngày báo cáo"></div>
+    <div class="range">
+      <label for="from">Từ</label><input type="date" id="from">
+      <label for="to">đến</label><input type="date" id="to">
+    </div>
+  </section>
 
   <section class="kpis" id="kpis"></section>
 
-  <section class="alert" aria-labelledby="h-old">
+  <section class="alert" id="alert" aria-labelledby="h-old">
     <h2 id="h-old">⚠ PG dùng clip cũ để truyền thông</h2>
-    <div class="flags">
-      <div class="flag">
-        <strong>Hồng Thúy – Ngọc Anh</strong>
-        <p>Clip Facebook Reno16F 5G được <b>đăng từ 20:26 ngày 30/9</b>, không phải clip mới hôm nay. Hai link Facebook nộp lên (cột C và cột G) mở ra <b>cùng một reel</b>. Hai link TikTok (cột B và D) cũng là <b>cùng một link</b>.</p>
-        <a href="https://www.facebook.com/reel/1768036774435462" target="_blank" rel="noopener">facebook.com/reel/1768036774435462</a>
-      </div>
-      <div class="flag">
-        <strong>Trinh Trọng Nghĩa</strong>
-        <p>Clip Facebook được <b>đăng từ 16:04 ngày 3/10</b> (hôm qua), nộp lại làm bài của ngày 4/10. Clip TikTok thì đăng mới lúc 09:55 ngày 4/10.</p>
-        <a href="https://www.facebook.com/reel/2362140401288686" target="_blank" rel="noopener">facebook.com/reel/2362140401288686</a>
-      </div>
-    </div>
-    <ul class="minor">
-      <li><b>Chưa đăng bài:</b> Đinh Thị Yến Nhi (ghi “bận học online, không làm kịp”), Thảo Vy – Khang Thịnh (để trống).</li>
-      <li><b>Nộp sai link:</b> Trâm – Chí Trung chỉ gửi link trang cá nhân TikTok, không có link bài đăng cụ thể và không có bài Facebook.</li>
-      <li><b>Đăng trễ:</b> Tuấn Kiệt – Thành Nhân đăng TikTok lúc 19:14, không có nội dung mô tả sản phẩm.</li>
-    </ul>
+    <p class="note" id="noold" hidden>Không có PG nào dùng clip cũ trong khoảng ngày đã chọn.</p>
+    <div class="flags" id="flags"></div>
+    <ul class="minor" id="minor"></ul>
   </section>
 
   <div class="cols">
@@ -139,7 +140,7 @@ footer{font-size:.8rem;color:var(--muted);display:grid;gap:4px}
   <section class="panel" aria-labelledby="h-detail" style="padding:0;border:0;background:transparent">
     <div class="toolbar">
       <h2 id="h-detail">Chi tiết từng bài đăng</h2>
-      <div class="chips" role="group" aria-label="Lọc">
+      <div class="chips" id="kchips" role="group" aria-label="Lọc kênh">
         <button type="button" id="f-all" data-f="all" aria-pressed="true">Tất cả</button>
         <button type="button" id="f-tt" data-f="TikTok" aria-pressed="false">TikTok</button>
         <button type="button" id="f-fb" data-f="Facebook" aria-pressed="false">Facebook</button>
@@ -160,7 +161,7 @@ footer{font-size:.8rem;color:var(--muted);display:grid;gap:4px}
 
   <footer>
     <span>“—” ở cột View: TikTok bật chặn chống bot giữa chừng nên chưa lấy được số liệu những clip này. Facebook không công khai lượt xem reel nên cột View chỉ có số của TikTok.</span>
-    <span>Bài đăng hôm nay nên lượt xem hiện tại chính là lượt xem trong ngày 4/10.</span>
+    <span>Lượt xem là số tại thời điểm lấy dữ liệu (tối ngày báo cáo). Mỗi ngày mới sẽ được thêm vào bộ lọc ngày.</span>
   </footer>
 </div>
 
@@ -175,13 +176,13 @@ const P=[
  {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"A7 Pro",c:"Reel",t:"04/10 10:21",v:null,l:2,m:2,s:5,u:"https://www.facebook.com/reel/1825088155590797"},
  {p:"Linh – Thanh Trâm",k:"TikTok",sp:"Reno16F",c:"Reno16F 5G giảm 1 triệu, còn 14tr990",t:"04/10 09:20",v:2090,l:25,m:0,s:2,u:"https://vt.tiktok.com/ZSbutUoCR/"},
  {p:"Linh – Thanh Trâm",k:"Facebook",sp:"Reno16F",c:"Reel",t:"04/10 09:23",v:null,l:2,m:0,s:0,u:"https://www.facebook.com/reel/1919319782360677"},
- {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"04/10 19:14",v:25,l:2,m:4,s:0,u:"https://vt.tiktok.com/ZSbHWg52H/",st:"warn",n:"Đăng trễ"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"04/10 19:14",v:25,l:2,m:4,s:0,u:"https://vt.tiktok.com/ZSbHWg52H/",st:"warn",n:"Đăng trễ",why:"TikTok đăng lúc 19:14, không ghi sản phẩm"},
  {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"Không ghi",c:"Reel",t:"04/10 10:53",v:null,l:1,m:0,s:0,u:"https://www.facebook.com/reel/1974051029957580"},
  {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro vừa về shop – pin 8.000mAh, sạc 45W",t:"04/10 08:50",v:158,l:3,m:0,s:1,u:"https://vt.tiktok.com/ZSbuwWcdp/"},
  {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"A6C",c:"Cuối tuần giảm ngay 200k cho A6C",t:"04/10 10:52",v:162,l:2,m:0,s:0,u:"https://vt.tiktok.com/ZSbuwoXMV/"},
  {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro vừa về shop",t:"04/10 08:51",v:null,l:0,m:1,s:null,u:"https://www.facebook.com/share/r/17iGdj8bRQ/"},
  {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"A6C",c:"Reel",t:"04/10 10:58",v:null,l:5,m:1,s:20,u:"https://www.facebook.com/reel/4575797579367149"},
- {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"—",c:"Không mở được link",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbutkdYR/",st:"warn",n:"Link lỗi"},
+ {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"—",c:"Không mở được link",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbutkdYR/",st:"warn",n:"Link lỗi",why:"link TikTok không mở được"},
  {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"Reno16F",c:"OPPO Reno16F – đưa cả hành tinh lên màn hình (bài ảnh)",t:"04/10 09:38",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/p/19SaZbSxEo/"},
  {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro vừa về shop",t:"04/10 10:20",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbucVUo1/"},
  {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"A7 Pro",c:"Reel",t:"04/10 10:21",v:null,l:6,m:2,s:0,u:"https://www.facebook.com/reel/4547715975468422"},
@@ -191,10 +192,10 @@ const P=[
  {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"A7 Pro",c:"Reel",t:"04/10 08:47",v:null,l:3,m:2,s:1,u:"https://www.facebook.com/reel/1418249600772946"},
  {p:"Lượm – Thanh Duy",k:"TikTok",sp:"A6C",c:"OPPO A6C giảm ngay 200k – màn lớn, pin 7000mAh",t:"04/10 11:11",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuEgmtW/"},
  {p:"Lượm – Thanh Duy",k:"Facebook",sp:"A6C",c:"Reel",t:"04/10 11:16",v:null,l:1,m:0,s:0,u:"https://www.facebook.com/reel/1381895594141340"},
- {p:"Đinh Thị Yến Nhi",k:"—",sp:"—",c:"Bận học online, không làm kịp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng"},
+ {p:"Đinh Thị Yến Nhi",k:"—",sp:"—",c:"Bận học online, không làm kịp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"ghi “bận học online, không làm kịp”"},
  {p:"Thắm – Khánh Hà",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro vừa về shop",t:"04/10 10:11",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbHx5XfY/"},
  {p:"Thắm – Khánh Hà",k:"Facebook",sp:"A7 Pro",c:"Reel",t:"04/10 10:15",v:null,l:3,m:2,s:1,u:"https://www.facebook.com/reel/3540939692730762"},
- {p:"Thảo Vy – Khang Thịnh",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng"},
+ {p:"Thảo Vy – Khang Thịnh",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"để trống"},
  {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"04/10 11:49",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbHJ7CdE/"},
  {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Không ghi",c:"Reel",t:"04/10 11:55",v:null,l:3,m:1,s:0,u:"https://www.facebook.com/reel/2119009918821732"},
  {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"Reno16F",c:"Oppo Reno 16F",t:"04/10 09:55",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuWjnub/"},
@@ -203,7 +204,7 @@ const P=[
  {p:"Thư – Tân Hạnh Phúc",k:"Facebook",sp:"A6C",c:"Cuối tuần ghé ĐTDĐ Tân Hạnh Phúc chốt deal",t:"04/10 10:38",v:null,l:3,m:0,s:null,u:"https://www.facebook.com/share/r/1Ef96ywWhE/"},
  {p:"Dung – Chí Trung",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro – đẹp, mạnh, sang",t:"04/10 11:02",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuwHT9N/"},
  {p:"Dung – Chí Trung",k:"Facebook",sp:"A7 Pro",c:"Video",t:"04/10 11:07",v:null,l:1,m:0,s:0,u:"https://www.facebook.com/watch/?v=1665682611845999"},
- {p:"Trâm – Chí Trung",k:"TikTok",sp:"—",c:"Chỉ gửi link trang cá nhân, không có bài cụ thể",t:"—",v:null,l:null,m:null,s:null,u:"https://www.tiktok.com/@h.q.tram_bap",st:"warn",n:"Sai link"},
+ {p:"Trâm – Chí Trung",k:"TikTok",sp:"—",c:"Chỉ gửi link trang cá nhân, không có bài cụ thể",t:"—",v:null,l:null,m:null,s:null,u:"https://www.tiktok.com/@h.q.tram_bap",st:"warn",n:"Sai link",why:"chỉ gửi link trang cá nhân TikTok, không có bài Facebook"},
  {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"A7 Pro",c:"Siêu phẩm mới ra mắt – OPPO A7 Pro 5G, pin 8000mAh",t:"04/10 13:28",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbH6jthv/"},
  {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"A7 Pro",c:"Reel",t:"04/10 11:25",v:null,l:5,m:2,s:6,u:"https://www.facebook.com/reel/1389987142837850"},
  {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro vừa về shop",t:"04/10 09:47",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbunEk1R/"},
@@ -213,56 +214,86 @@ const P=[
  {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Reno16F",c:"Đập hộp Reno 16F cùng bé nhỏ",t:"04/10 11:20",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuo3nLP/"},
  {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Reno16F",c:"Reel",t:"04/10 11:31",v:null,l:3,m:3,s:0,u:"https://www.facebook.com/reel/1093471399931832"},
  {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"04/10 09:55",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuWP63D/"},
- {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Không ghi",c:"Reel",t:"03/10 16:04",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/reel/2362140401288686",st:"old",n:"Clip cũ 3/10"},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Không ghi",c:"Reel",t:"03/10 16:04",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/reel/2362140401288686",st:"old",n:"Clip cũ 3/10",why:"Clip Facebook được <b>đăng từ 16:04 ngày 3/10</b>, nộp lại làm bài của ngày 4/10. Clip TikTok thì đăng mới lúc 09:55 ngày 4/10."},
  {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Reno16F",c:"(không có mô tả) — nộp trùng 2 lần",t:"04/10 12:42",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbHLqStG/",st:"warn",n:"Link trùng"},
- {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Reno16F",c:"OPPO Reno16F 5G – sang xịn, pin khủng — nộp trùng 2 lần",t:"30/09 20:26",v:null,l:10,m:7,s:0,u:"https://www.facebook.com/reel/1768036774435462",st:"old",n:"Clip cũ 30/9"}
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Reno16F",c:"OPPO Reno16F 5G – sang xịn, pin khủng — nộp trùng 2 lần",t:"30/09 20:26",v:null,l:10,m:7,s:0,u:"https://www.facebook.com/reel/1768036774435462",st:"old",n:"Clip cũ 30/9",why:"Clip Facebook Reno16F 5G được <b>đăng từ 20:26 ngày 30/9</b>. Hai link Facebook nộp lên (cột C và G) mở ra <b>cùng một reel</b>; hai link TikTok (cột B và D) cũng <b>trùng nhau</b>."}
 ];
-const OLD=new Set(P.filter(x=>x.st==="old").map(x=>x.p));
+
+// Mỗi ngày báo cáo (một tab trong sheet) là một mục ở đây. Thêm ngày mới: "2026-10-05": [ ...các dòng... ]
+const REPORTS={"2026-10-04":P};
+const ALL=Object.entries(REPORTS).flatMap(([d,rows])=>rows.map(r=>({...r,d})));
+const DAYS=Object.keys(REPORTS).sort();
+const dm=d=>{const [y,m,dd]=d.split('-');return +dd+'/'+(+m)};
+const dmy=d=>{const [y,m,dd]=d.split('-');return +dd+'/'+(+m)+'/'+y};
 const fmt=n=>n==null?'<span class="na">—</span>':n.toLocaleString('vi-VN');
 const sum=(a,k)=>a.reduce((t,x)=>t+(x[k]||0),0);
-const posts=P.filter(x=>x.k!=="—"&&x.t!=="—");
-const pgs=[...new Set(P.map(x=>x.p))];
-const posted=new Set(posts.map(x=>x.p));
-const tt=posts.filter(x=>x.k==="TikTok");
-document.getElementById('kpis').innerHTML=[
- [posted.size+'/'+pgs.length,'PG có đăng bài'],
- [posts.length,'Bài đăng ('+tt.length+' TikTok · '+(posts.length-tt.length)+' Facebook)'],
- [sum(tt,'v').toLocaleString('vi-VN'),'View TikTok hôm nay ('+tt.filter(x=>x.v!=null).length+' clip có số liệu)'],
- [sum(posts,'l'),'Lượt like'],
- [sum(posts,'m'),'Bình luận'],
- [OLD.size,'PG dùng clip cũ']
-].map(([b,s])=>`<div class="kpi"><b>${b}</b><span>${s}</span></div>`).join('');
+const $=id=>document.getElementById(id);
+const fromEl=$('from'),toEl=$('to');
+[fromEl,toEl].forEach(e=>{e.min=DAYS[0];e.max=DAYS[DAYS.length-1]});
+let FROM=DAYS[DAYS.length-1],TO=FROM,F='all';
 
-const score={};
-posts.forEach(x=>{score[x.p]=(score[x.p]||0)+(x.l||0)+2*(x.m||0)+(x.s||0)});
-const ranked=Object.entries(score).filter(([p])=>!OLD.has(p)).sort((a,b)=>b[1]-a[1]).slice(0,10);
-const mx=ranked[0][1];
-document.getElementById('rank').innerHTML=ranked.map(([p,v],i)=>{
- const views=sum(tt.filter(x=>x.p===p),'v');
- return `<li class="${i<3?'top':''}"><span class="pos">${i+1}</span><span class="nm" title="${p}${views?' · '+views+' view TikTok':''}">${p}</span><span class="bar"><i style="width:${v/mx*100}%"></i></span><span class="v">${v}</span></li>`}).join('');
+function dayChips(){
+ const btn=(lab,f,t)=>`<button type="button" data-from="${f}" data-to="${t}" aria-pressed="${FROM===f&&TO===t}">${lab}</button>`;
+ $('dchips').innerHTML=btn('Tất cả các ngày',DAYS[0],DAYS[DAYS.length-1])+DAYS.slice().reverse().map(d=>btn(dm(d),d,d)).join('');
+ $('dchips').querySelectorAll('button').forEach(b=>b.onclick=()=>{FROM=b.dataset.from;TO=b.dataset.to;update()});
+ fromEl.value=FROM;toEl.value=TO;
+}
+fromEl.onchange=()=>{if(fromEl.value){FROM=fromEl.value;if(FROM>TO)TO=FROM;update()}};
+toEl.onchange=()=>{if(toEl.value){TO=toEl.value;if(TO<FROM)FROM=TO;update()}};
 
-const pc={};posts.forEach(x=>{pc[x.sp]=(pc[x.sp]||0)+1});
-const pe=Object.entries(pc).sort((a,b)=>b[1]-a[1]);const pm=pe[0][1];
-document.getElementById('prod').innerHTML=pe.map(([k,v])=>`<div><span>${k}</span><span class="bar"><i style="width:${v/pm*100}%"></i></span><span class="num">${v}</span></div>`).join('');
+let ROWS=[];
+function update(){
+ dayChips();
+ ROWS=ALL.filter(x=>x.d>=FROM&&x.d<=TO);
+ const multi=new Set(ROWS.map(x=>x.d)).size>1;
+ $('title').textContent=FROM===TO?'Bài đăng ngày '+dmy(FROM):'Bài đăng từ '+dm(FROM)+' đến '+dmy(TO);
+ const posts=ROWS.filter(x=>x.k!=="—"&&x.t!=="—");
+ const tt=posts.filter(x=>x.k==="TikTok");
+ const pgs=new Set(ROWS.map(x=>x.p)), posted=new Set(posts.map(x=>x.p));
+ const oldRows=ROWS.filter(x=>x.st==="old"), OLD=new Set(oldRows.map(x=>x.p));
+ $('kpis').innerHTML=[
+  [posted.size+'/'+pgs.size,'PG có đăng bài'],
+  [posts.length,'Bài đăng ('+tt.length+' TikTok · '+(posts.length-tt.length)+' Facebook)'],
+  [sum(tt,'v').toLocaleString('vi-VN'),'View TikTok ('+tt.filter(x=>x.v!=null).length+' clip có số liệu)'],
+  [sum(posts,'l'),'Lượt like'],[sum(posts,'m'),'Bình luận'],[OLD.size,'PG dùng clip cũ']
+ ].map(([b,t])=>`<div class="kpi"><b>${b}</b><span>${t}</span></div>`).join('');
 
-let F='all';
+ $('flags').innerHTML=oldRows.map(x=>`<div class="flag"><strong>${x.p}${multi?' · '+dm(x.d):''}</strong><p>${x.why||x.n}</p><a href="${x.u}" target="_blank" rel="noopener">${x.u.replace('https://www.','')}</a></div>`).join('');
+ $('noold').hidden=oldRows.length>0;
+ const grp={};ROWS.filter(x=>x.st==="warn"&&!OLD.has(x.p)).forEach(x=>{(grp[x.n]=grp[x.n]||[]).push(x.p+(multi?' ('+dm(x.d)+')':'')+(x.why?' – '+x.why:''))});
+ $('minor').innerHTML=Object.entries(grp).map(([n,l])=>`<li><b>${n}:</b> ${l.join('; ')}.</li>`).join('');
+
+ const score={};posts.forEach(x=>{score[x.p]=(score[x.p]||0)+(x.l||0)+2*(x.m||0)+(x.s||0)});
+ const ranked=Object.entries(score).filter(([p])=>!OLD.has(p)).sort((a,b)=>b[1]-a[1]).slice(0,10);
+ const mx=ranked.length?Math.max(ranked[0][1],1):1;
+ $('rank').innerHTML=ranked.length?ranked.map(([p,v],i)=>{const views=sum(tt.filter(x=>x.p===p),'v');
+  return `<li class="${i<3?'top':''}"><span class="pos">${i+1}</span><span class="nm" title="${p}${views?' · '+views+' view TikTok':''}">${p}</span><span class="bar"><i style="width:${v/mx*100}%"></i></span><span class="v">${v}</span></li>`}).join(''):'<li class="empty">Chưa có dữ liệu</li>';
+ const pc={};posts.forEach(x=>{pc[x.sp]=(pc[x.sp]||0)+1});
+ const pe=Object.entries(pc).sort((a,b)=>b[1]-a[1]);const pm=pe.length?pe[0][1]:1;
+ $('prod').innerHTML=pe.map(([k,v])=>`<div><span>${k}</span><span class="bar"><i style="width:${v/pm*100}%"></i></span><span class="num">${v}</span></div>`).join('')||'<p class="empty">Chưa có dữ liệu</p>';
+ render();
+}
+
 function render(){
- const q=document.getElementById('q').value.trim().toLowerCase();
+ const q=$('q').value.trim().toLowerCase();
+ const multi=new Set(ROWS.map(x=>x.d)).size>1;
  let last='';
- document.getElementById('tb').innerHTML=P.filter(x=>{
+ const rows=ROWS.slice().sort((a,b)=>b.d.localeCompare(a.d)).filter(x=>{
   if(q&&!x.p.toLowerCase().includes(q))return false;
   if(F==='flag')return !!x.st;
   if(F!=='all')return x.k===F;
-  return true}).map(x=>{
-  const first=x.p!==last;last=x.p;
+  return true});
+ $('tb').innerHTML=rows.map(x=>{
+  const key=x.d+x.p,first=key!==last;last=key;
   const st=x.st?`<span class="st ${x.st}">${x.n}</span>`:'<span class="st ok">Bài mới</span>';
   const ch=x.k==="TikTok"?'<span class="pf tt">TikTok</span>':x.k==="Facebook"?'<span class="pf fb">Facebook</span>':'—';
   const c=x.u?`<a href="${x.u}" target="_blank" rel="noopener">${x.c}</a>`:x.c;
-  return `<tr class="${first?'grp':''}"><td class="pg">${first?x.p:''}</td><td>${ch}</td><td>${x.sp}</td><td class="cap">${c}</td><td class="num">${x.t}</td><td class="r num">${fmt(x.v)}</td><td class="r num">${fmt(x.l)}</td><td class="r num">${fmt(x.m)}</td><td class="r num">${fmt(x.s)}</td><td>${st}</td></tr>`}).join('');
+  const pg=first?x.p+(multi?`<span class="dchip">Ngày BC ${dm(x.d)}</span>`:''):'';
+  return `<tr class="${first?'grp':''}"><td class="pg">${pg}</td><td>${ch}</td><td>${x.sp}</td><td class="cap">${c}</td><td class="num">${x.t}</td><td class="r num">${fmt(x.v)}</td><td class="r num">${fmt(x.l)}</td><td class="r num">${fmt(x.m)}</td><td class="r num">${fmt(x.s)}</td><td>${st}</td></tr>`}).join('')||'<tr><td colspan="10" class="empty">Không có bài đăng nào khớp bộ lọc.</td></tr>';
 }
-document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{F=b.dataset.f;document.querySelectorAll('.chips button').forEach(o=>o.setAttribute('aria-pressed',o===b));render()}));
-document.getElementById('q').addEventListener('input',render);
-render();
+document.querySelectorAll('#kchips button').forEach(b=>b.addEventListener('click',()=>{F=b.dataset.f;document.querySelectorAll('#kchips button').forEach(o=>o.setAttribute('aria-pressed',o===b));render()}));
+$('q').addEventListener('input',render);
+update();
 </script>
 
 </body>
