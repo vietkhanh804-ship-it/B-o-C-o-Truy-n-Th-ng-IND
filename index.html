@@ -99,7 +99,8 @@ footer{font-size:.8rem;color:var(--muted);display:grid;gap:4px}
   <header>
     <div class="eyebrow">Báo cáo Truyền Thông kênh IND · OPPO Tiền Giang</div>
     <h1 id="title">Bài đăng ngày 4/10/2026</h1>
-    <p class="sub">Tổng hợp từ sheet “link bài đăng T10”, mỗi tab là một ngày báo cáo. Số liệu lấy trực tiếp từ TikTok và Facebook lúc khoảng 19h–20h ngày 4/10.</p>
+    <p class="sub" id="daynote" hidden style="color:var(--warn);font-weight:600"></p>
+    <p class="sub">Tổng hợp từ sheet “link bài đăng T10”, mỗi tab là một ngày báo cáo. Số liệu lấy trực tiếp từ TikTok và Facebook vào tối ngày báo cáo.</p>
   </header>
 
   <section class="datebar" aria-label="Lọc theo ngày">
@@ -220,7 +221,60 @@ const P=[
 ];
 
 // Mỗi ngày báo cáo (một tab trong sheet) là một mục ở đây. Thêm ngày mới: "2026-10-05": [ ...các dòng... ]
-const REPORTS={"2026-10-04":P};
+const P5=[
+ {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaSuYwe/"},
+ {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Jbh9ht3uj/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaU6d2b/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1AEwV3yVaC/"},
+ {p:"Linh – Thanh Trâm",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaACLWy/"},
+ {p:"Linh – Thanh Trâm",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19LRhk2XCJ/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaUeuK2/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DcesQvxRK/"},
+ {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaURY3X/"},
+ {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19awiAEexC/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbayUaVr/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DoSd1ofy1/"},
+ {p:"Phương Truyền",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaf16Aw/"},
+ {p:"Phương Truyền",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/v/1KXs3FkM85/"},
+ {p:"Lượm – Thanh Duy",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaUqPEU/"},
+ {p:"Lượm – Thanh Duy",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1JLc5HZfWA/"},
+ {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaUNdyh/"},
+ {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Fz8ykMbbx/"},
+ {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaUEooh/"},
+ {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1FbWD1Jqws/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaf4qGT/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1QvknqLg38/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbafH1ES/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1H6prDcmvg/"},
+ {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbafVBQA/"},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/v/14wKsTaCBnn/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaa8UWx/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19dD6ZvuZQ/"},
+ {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaH14GY/"},
+ {p:"Vinh – Huỳnh Mai",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1JMqBd5Kmi/"},
+ {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSba9H3Uc/"},
+ {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1CepCfPti5/"},
+ {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbm2WhFv/"},
+ {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1JekWRSRvg/"},
+ {p:"Ngọc Danh – Nhựt Huy",k:"TikTok",sp:"Chưa xác định",c:"Chỉ gửi link trang cá nhân",t:"—",v:null,l:null,m:null,s:null,u:"https://www.tiktok.com/@ngocdanh06",st:"warn",n:"Sai link",why:"link TikTok là trang cá nhân, không phải bài đăng"},
+ {p:"Ngọc Danh – Nhựt Huy",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1HrXQSttpj/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Chưa xác định",c:"Không có bài TikTok",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Sai link",why:"dán link Facebook vào cột TikTok, không có bài TikTok"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1iru8ndJFf/"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Chưa xác định",c:"Không nộp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có TikTok"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Chưa xác định",c:"Bài ảnh/bài viết – chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/1EcjyzoMNx/"},
+ {p:"Thảo Vy – Khang Thịnh",k:"TikTok",sp:"Chưa xác định",c:"Không nộp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có TikTok"},
+ {p:"Thảo Vy – Khang Thịnh",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/v/19HM3sfSG8/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaUBnqh/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"Chưa xác định",c:"Không nộp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có Facebook"},
+ {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaynxWf/"},
+ {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Chưa xác định",c:"Không nộp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có Facebook"},
+ {p:"Dung – Chí Trung",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbaPtxtk/"},
+ {p:"Dung – Chí Trung",k:"Facebook",sp:"Chưa xác định",c:"Không nộp",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có Facebook"},
+ {p:"Trâm – Chí Trung",k:"—",sp:"Chưa xác định",c:"Chỉ gửi link trang cá nhân",t:"—",v:null,l:null,m:null,s:null,u:"https://www.tiktok.com/@h.q.tram_bap",st:"warn",n:"Sai link",why:"lần thứ 2 liên tiếp chỉ gửi link trang cá nhân TikTok, không có Facebook"}
+];
+const REPORTS={"2026-10-04":P,"2026-10-05":P5};
+// Ghi chú hiển thị dưới tiêu đề theo ngày
+const NOTES={"2026-10-05":"Ngày 5/10 mới cập nhật danh sách link từ sheet. Số liệu view, like, bình luận và kiểm tra clip cũ sẽ bổ sung sau khi lấy được từ TikTok/Facebook."};
 const ALL=Object.entries(REPORTS).flatMap(([d,rows])=>rows.map(r=>({...r,d})));
 const DAYS=Object.keys(REPORTS).sort();
 const dm=d=>{const [y,m,dd]=d.split('-');return +dd+'/'+(+m)};
@@ -246,6 +300,7 @@ function update(){
  dayChips();
  ROWS=ALL.filter(x=>x.d>=FROM&&x.d<=TO);
  const multi=new Set(ROWS.map(x=>x.d)).size>1;
+ const notes=[...new Set(ROWS.map(x=>x.d))].filter(d=>NOTES[d]).map(d=>NOTES[d]);$('daynote').textContent=notes.join(' ');$('daynote').hidden=!notes.length;
  $('title').textContent=FROM===TO?'Bài đăng ngày '+dmy(FROM):'Bài đăng từ '+dm(FROM)+' đến '+dmy(TO);
  const posts=ROWS.filter(x=>x.k!=="—"&&x.t!=="—");
  const tt=posts.filter(x=>x.k==="TikTok");
@@ -260,14 +315,16 @@ function update(){
 
  $('flags').innerHTML=oldRows.map(x=>`<div class="flag"><strong>${x.p}${multi?' · '+dm(x.d):''}</strong><p>${x.why||x.n}</p><a href="${x.u}" target="_blank" rel="noopener">${x.u.replace('https://www.','')}</a></div>`).join('');
  $('noold').hidden=oldRows.length>0;
+ $('noold').textContent=notes.length?'Chưa kiểm tra clip cũ cho ngày 5/10 – sẽ cập nhật khi lấy được dữ liệu từ TikTok/Facebook.':'Không có PG nào dùng clip cũ trong khoảng ngày đã chọn.';
  const grp={};ROWS.filter(x=>x.st==="warn"&&!OLD.has(x.p)).forEach(x=>{(grp[x.n]=grp[x.n]||[]).push(x.p+(multi?' ('+dm(x.d)+')':'')+(x.why?' – '+x.why:''))});
  $('minor').innerHTML=Object.entries(grp).map(([n,l])=>`<li><b>${n}:</b> ${l.join('; ')}.</li>`).join('');
 
  const score={};posts.forEach(x=>{score[x.p]=(score[x.p]||0)+(x.l||0)+2*(x.m||0)+(x.s||0)});
- const ranked=Object.entries(score).filter(([p])=>!OLD.has(p)).sort((a,b)=>b[1]-a[1]).slice(0,10);
+ const hasStat=new Set(posts.filter(x=>x.l!=null||x.v!=null).map(x=>x.p));
+ const ranked=Object.entries(score).filter(([p])=>!OLD.has(p)&&hasStat.has(p)).sort((a,b)=>b[1]-a[1]).slice(0,10);
  const mx=ranked.length?Math.max(ranked[0][1],1):1;
  $('rank').innerHTML=ranked.length?ranked.map(([p,v],i)=>{const views=sum(tt.filter(x=>x.p===p),'v');
-  return `<li class="${i<3?'top':''}"><span class="pos">${i+1}</span><span class="nm" title="${p}${views?' · '+views+' view TikTok':''}">${p}</span><span class="bar"><i style="width:${v/mx*100}%"></i></span><span class="v">${v}</span></li>`}).join(''):'<li class="empty">Chưa có dữ liệu</li>';
+  return `<li class="${i<3?'top':''}"><span class="pos">${i+1}</span><span class="nm" title="${p}${views?' · '+views+' view TikTok':''}">${p}</span><span class="bar"><i style="width:${v/mx*100}%"></i></span><span class="v">${v}</span></li>`}).join(''):'<li class="empty">Chưa có số liệu tương tác cho ngày này</li>';
  const pc={};posts.forEach(x=>{pc[x.sp]=(pc[x.sp]||0)+1});
  const pe=Object.entries(pc).sort((a,b)=>b[1]-a[1]);const pm=pe.length?pe[0][1]:1;
  $('prod').innerHTML=pe.map(([k,v])=>`<div><span>${k}</span><span class="bar"><i style="width:${v/pm*100}%"></i></span><span class="num">${v}</span></div>`).join('')||'<p class="empty">Chưa có dữ liệu</p>';
