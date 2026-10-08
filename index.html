@@ -115,7 +115,7 @@ footer{font-size:.8rem;color:var(--muted);display:grid;gap:4px}
   <section class="kpis" id="kpis"></section>
 
   <section class="alert" id="alert" aria-labelledby="h-old">
-    <h2 id="h-old">⚠ PG dùng clip cũ để truyền thông</h2>
+    <h2 id="h-old">⚠ Clip cũ và các lỗi cần xử lý</h2>
     <p class="note" id="noold" hidden>Không có PG nào dùng clip cũ trong khoảng ngày đã chọn.</p>
     <div class="flags" id="flags"></div>
     <ul class="minor" id="minor"></ul>
@@ -215,67 +215,202 @@ const P=[
  {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Reno16F",c:"Đập hộp Reno 16F cùng bé nhỏ",t:"04/10 11:20",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuo3nLP/"},
  {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Reno16F",c:"Reel",t:"04/10 11:31",v:null,l:3,m:3,s:0,u:"https://www.facebook.com/reel/1093471399931832"},
  {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"04/10 09:55",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbuWP63D/"},
- {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Không ghi",c:"Reel",t:"03/10 16:04",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/reel/2362140401288686",st:"old",n:"Clip cũ 3/10",why:"Clip Facebook được <b>đăng từ 16:04 ngày 3/10</b>, nộp lại làm bài của ngày 4/10. Clip TikTok thì đăng mới lúc 09:55 ngày 4/10."},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Không ghi",c:"Reel",t:"04/10 09:57",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/reel/2362140401288686"},
  {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Reno16F",c:"(không có mô tả) — nộp trùng 2 lần",t:"04/10 12:42",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbHLqStG/",st:"warn",n:"Link trùng"},
- {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Reno16F",c:"OPPO Reno16F 5G – sang xịn, pin khủng — nộp trùng 2 lần",t:"30/09 20:26",v:null,l:10,m:7,s:0,u:"https://www.facebook.com/reel/1768036774435462",st:"old",n:"Clip cũ 30/9",why:"Clip Facebook Reno16F 5G được <b>đăng từ 20:26 ngày 30/9</b>. Hai link Facebook nộp lên (cột C và G) mở ra <b>cùng một reel</b>; hai link TikTok (cột B và D) cũng <b>trùng nhau</b>."}
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Reno16F",c:"OPPO Reno16F 5G – sang xịn, pin khủng (2 link Facebook nộp trùng một bài)",t:"04/10 10:38",v:null,l:10,m:7,s:0,u:"https://www.facebook.com/reel/1768036774435462",st:"warn",n:"Nộp trùng",why:"hai link Facebook nộp lên là cùng một bài, hai link TikTok cũng trùng nhau"}
 ];
 
 // Mỗi ngày báo cáo (một tab trong sheet) là một mục ở đây. Thêm ngày mới: "2026-10-05": [ ...các dòng... ]
 const P5=[
- {p:"Ngọc Danh – Nhựt Huy",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb9TdWwD/"},
- {p:"Ngọc Danh – Nhựt Huy",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DAhVXYSHa/"},
- {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxJN3dL/"},
- {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1GhPXNfTBy/"},
- {p:"Như Ý – Tuấn Kiệt",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx8QxuP/"},
- {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1GYrKsLE5D/"},
- {p:"Linh – Thanh Trâm",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx27KHM/"},
- {p:"Linh – Thanh Trâm",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/v/14wwocge2RG/"},
- {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxeT65X/"},
- {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1LvQ5GtNUe/"},
- {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxMSwYd/"},
- {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/14tX7MS6mBL/"},
- {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxLoKKB/"},
- {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1duSW9KQQn/"},
- {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxeLmAA/"},
- {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1E33qRaK2e/"},
- {p:"Phương Truyền",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxr8vqH/"},
- {p:"Phương Truyền",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/v/19s64Qfwji/"},
- {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb9w4TJk/"},
- {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DZHBRWnmG/"},
- {p:"Lượm – Thanh Duy",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxYG8ya/"},
- {p:"Lượm – Thanh Duy",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1F2x9fxnub/"},
- {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxjnCBR/"},
- {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/14xgxANE8z1/"},
- {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxP9Ccm/"},
- {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1BzELRNoB6/"},
- {p:"Thảo Vy – Khang Thịnh",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbQsWka6/"},
- {p:"Thảo Vy – Khang Thịnh",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1CRwsNAWqR/"},
- {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxNoGdt/"},
- {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19RHTc5je3/"},
- {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxBDQvY/"},
- {p:"Như Quỳnh – Hồng Ngọc",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1GAtxaKwGP/"},
- {p:"Thư – Tân Hạnh Phúc",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxBjABU/"},
- {p:"Thư – Tân Hạnh Phúc",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19ZtzBMQiD/"},
- {p:"Dung – Chí Trung",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb9KRDEG/"},
- {p:"Dung – Chí Trung",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/v/1PqZxeKGqd/"},
- {p:"Trâm – Chí Trung",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxMM7Hm/"},
- {p:"Trâm – Chí Trung",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1dNBqx4jFQ/"},
- {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx9GTsD/"},
- {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1CVEkBJ18e/"},
- {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbQdyPHD/"},
- {p:"Vinh – Huỳnh Mai",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Cn7KZpdd5/"},
- {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx9LLt5/"},
- {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/19bX263GjP/"},
- {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxA9T8g/"},
- {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Hk5EaVget/"},
- {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx8Y83L/"},
- {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1GxMTUtTxY/"},
- {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxJxfrW/"},
- {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Chưa xác định",c:"Chưa lấy được nội dung",t:"05/10 —",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1J5HLKDqpd/"}
+ {p:"Ngọc Danh – Nhựt Huy",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb9TdWwD/"},
+ {p:"Ngọc Danh – Nhựt Huy",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"05/10 07:43",v:null,l:41,m:12,s:12,u:"https://www.facebook.com/share/r/1DAhVXYSHa/"},
+ {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"Không ghi",c:"Oppo cho phụ huynh",t:"05/10 08:07",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxJN3dL/"},
+ {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"05/10 08:17",v:null,l:0,m:1,s:null,u:"https://www.facebook.com/share/r/1GhPXNfTBy/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"TikTok",sp:"A7 Pro",c:"Mượt như Sunsilk – OPPO A7 Pro",t:"05/10 09:07",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx8QxuP/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 08:41",v:null,l:3,m:2,s:12,u:"https://www.facebook.com/share/r/1GYrKsLE5D/"},
+ {p:"Linh – Thanh Trâm",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro 5G giảm ngay 2 triệu",t:"05/10 09:41",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx27KHM/"},
+ {p:"Linh – Thanh Trâm",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 09:41",v:null,l:8,m:5,s:1,u:"https://www.facebook.com/share/v/14wwocge2RG/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"05/10 08:49",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxeT65X/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"05/10 08:46",v:null,l:6,m:3,s:0,u:"https://www.facebook.com/share/r/1LvQ5GtNUe/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro",t:"05/10 10:04",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxMSwYd/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 10:08",v:null,l:0,m:null,s:null,u:"https://www.facebook.com/share/r/14tX7MS6mBL/"},
+ {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro 5G – thiết kế đẹp, cấu hình xịn",t:"05/10 09:15",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxLoKKB/"},
+ {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 09:17",v:null,l:2,m:0,s:null,u:"https://www.facebook.com/share/r/1duSW9KQQn/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"Không ghi",c:"Mấy em OPPO mới về đẹp quá",t:"05/10 08:39",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxeLmAA/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"05/10 08:38",v:null,l:2,m:0,s:0,u:"https://www.facebook.com/share/r/1E33qRaK2e/"},
+ {p:"Phương Truyền",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro 5G mới ra mắt",t:"05/10 10:24",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxr8vqH/"},
+ {p:"Phương Truyền",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 10:15",v:null,l:1,m:0,s:null,u:"https://www.facebook.com/share/v/19s64Qfwji/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro đẹp sang, bền chuẩn",t:"05/10 07:45",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb9w4TJk/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 07:38",v:null,l:2,m:3,s:0,u:"https://www.facebook.com/share/r/1DZHBRWnmG/"},
+ {p:"Lượm – Thanh Duy",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro giá tầm trung, siêu bền",t:"05/10 09:40",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxYG8ya/"},
+ {p:"Lượm – Thanh Duy",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 09:48",v:null,l:1,m:0,s:null,u:"https://www.facebook.com/share/r/1F2x9fxnub/"},
+ {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"A7 Pro",c:"(không có mô tả)",t:"05/10 09:56",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxjnCBR/"},
+ {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 10:02",v:null,l:0,m:2,s:null,u:"https://www.facebook.com/share/r/14xgxANE8z1/"},
+ {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"05/10 11:46",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxP9Ccm/"},
+ {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"05/10 11:50",v:null,l:3,m:0,s:1,u:"https://www.facebook.com/share/r/1BzELRNoB6/"},
+ {p:"Thảo Vy – Khang Thịnh",k:"TikTok",sp:"A7 Pro",c:"Siêu phẩm OPPO A7 Pro 5G đã đổ bộ",t:"05/10 22:38",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbQsWka6/"},
+ {p:"Thảo Vy – Khang Thịnh",k:"Facebook",sp:"A7 Pro",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1CRwsNAWqR/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
+ {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Không ghi",c:"Còn chần chờ gì mà không hốt em nó về",t:"05/10 09:25",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxNoGdt/"},
+ {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"06/10 19:39",v:null,l:2,m:1,s:0,u:"https://www.facebook.com/share/r/19RHTc5je3/",st:"warn",n:"Đăng bù",why:"bài Facebook đăng lúc 06/10 19:39, sau ngày báo cáo"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxBDQvY/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"05/10 10:50",v:null,l:0,m:0,s:0,u:"https://www.facebook.com/share/r/1GAtxaKwGP/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro – ngoại hình đẹp",t:"05/10 10:48",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxBjABU/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 10:40",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/r/19ZtzBMQiD/"},
+ {p:"Dung – Chí Trung",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro đang có chương trình giảm",t:"05/10 08:01",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb9KRDEG/"},
+ {p:"Dung – Chí Trung",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 08:02",v:null,l:5,m:0,s:null,u:"https://www.facebook.com/share/v/1PqZxeKGqd/"},
+ {p:"Trâm – Chí Trung",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro đang có chương trình giảm",t:"05/10 10:16",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxMM7Hm/"},
+ {p:"Trâm – Chí Trung",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 10:11",v:null,l:3,m:1,s:0,u:"https://www.facebook.com/share/r/1dNBqx4jFQ/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro 5G – nâng tầm trải nghiệm",t:"05/10 12:46",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx9GTsD/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 11:16",v:null,l:5,m:0,s:6,u:"https://www.facebook.com/share/r/1CVEkBJ18e/"},
+ {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro vừa về shop",t:"05/10 16:56",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbQdyPHD/"},
+ {p:"Vinh – Huỳnh Mai",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 16:50",v:null,l:13,m:8,s:0,u:"https://www.facebook.com/share/r/1Cn7KZpdd5/"},
+ {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"A6C",c:"OPPO A6C chưa bao giờ ngừng hot",t:"05/10 12:46",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx9LLt5/"},
+ {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"Reno16F",c:"Bài viết Facebook",t:"05/10 12:42",v:null,l:1,m:0,s:null,u:"https://www.facebook.com/share/p/19bX263GjP/"},
+ {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Không ghi",c:"Thiết kế gợn sóng 3D",t:"05/10 11:07",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxA9T8g/"},
+ {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Không ghi",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Hk5EaVget/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
+ {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Không ghi",c:"Bạn thích phiên bản màu nào",t:"05/10 09:02",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbx8Y83L/"},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"05/10 09:06",v:null,l:1,m:1,s:1,u:"https://www.facebook.com/share/r/1GxMTUtTxY/"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"05/10 08:40",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbxJxfrW/"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"05/10 08:01",v:null,l:26,m:10,s:0,u:"https://www.facebook.com/share/r/1J5HLKDqpd/"}
 ];
-const REPORTS={"2026-10-04":P,"2026-10-05":P5};
+const P6=[
+ {p:"Ngọc Danh – Nhựt Huy",k:"TikTok",sp:"Reno16F",c:"Sale sốc OPPO Reno16 F 5G – trả góp 0đ",t:"06/10 07:49",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCVGsj3/"},
+ {p:"Ngọc Danh – Nhựt Huy",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"06/10 08:15",v:null,l:194,m:36,s:2,u:"https://www.facebook.com/share/r/1De1xCNSwe/"},
+ {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"A7 Pro",c:"Siêu bền bỉ gọi tên OPPO A7 Pro",t:"06/10 09:36",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCvW8ft/"},
+ {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"06/10 09:46",v:null,l:3,m:0,s:null,u:"https://www.facebook.com/share/v/1QW1bX1WBY/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"TikTok",sp:"Không ghi",c:"Máy giá tầm trung mà ngon – xịn",t:"06/10 07:39",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCV7CVQ/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"06/10 07:41",v:null,l:2,m:5,s:24,u:"https://www.facebook.com/share/r/1HRaD8MgxJ/"},
+ {p:"Linh – Thanh Trâm",k:"TikTok",sp:"A6C",c:"OPPO A6C giá quá hời",t:"06/10 09:44",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCTBALP/"},
+ {p:"Linh – Thanh Trâm",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 09:44",v:null,l:4,m:2,s:0,u:"https://www.facebook.com/share/r/1ERZHukTkW/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCsHjHw/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"A6C",c:"Bài viết Facebook",t:"06/10 08:43",v:null,l:0,m:null,s:null,u:"https://www.facebook.com/share/p/14vJDfPGy6d/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"A6C",c:"OPPO A6C giảm ngay 300.000",t:"06/10 08:58",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCG3oht/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 08:59",v:null,l:5,m:0,s:null,u:"https://www.facebook.com/share/r/1DQ7Y5kgYY/"},
+ {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCo3F78/"},
+ {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"A6C",c:"Bài viết Facebook",t:"06/10 10:49",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/1E4TzUoiyk/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"A6C",c:"OPPO A6C giá 4.xxx, mua trả góp",t:"06/10 08:24",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbC3XHQa/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 08:24",v:null,l:4,m:0,s:0,u:"https://www.facebook.com/share/r/1HFQBdDsMq/"},
+ {p:"Phương Truyền",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCKGdSM/"},
+ {p:"Phương Truyền",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"06/10 10:22",v:null,l:1,m:0,s:null,u:"https://www.facebook.com/share/v/1JcE5Q8kuH/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"A6C",c:"Mua OPPO A6C tặng vợ",t:"06/10 08:19",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCq4Q9r/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 08:01",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/share/r/1JyySNQ7Nq/"},
+ {p:"Lượm – Thanh Duy",k:"TikTok",sp:"A6C",c:"OPPO A6C giá nhỏ, màn lớn, pin trâu",t:"06/10 08:42",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCW2RAQ/"},
+ {p:"Lượm – Thanh Duy",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 09:34",v:null,l:5,m:0,s:null,u:"https://www.facebook.com/share/r/1FJuwrrtKm/"},
+ {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"06/10 08:55",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCGaXFy/"},
+ {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"06/10 09:00",v:null,l:5,m:3,s:0,u:"https://www.facebook.com/share/r/1Fj2quRNh3/"},
+ {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Không ghi",c:"Cùng em chốt đơn thôi nào",t:"06/10 11:59",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbXFXPkw/"},
+ {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"06/10 12:15",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/share/r/19Z1sNwsWm/"},
+ {p:"Thảo Vy – Khang Thịnh",k:"TikTok",sp:"A6C",c:"OPPO A6C máy đẹp – pin khủng",t:"06/10 23:38",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb4mEMvM/"},
+ {p:"Thảo Vy – Khang Thịnh",k:"Facebook",sp:"A6C",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/1KEJ6wSGKN/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
+ {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"A6C",c:"OPPO A6C pin 7000mAh, giá rẻ",t:"06/10 10:24",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCK9NvX/"},
+ {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 10:31",v:null,l:4,m:2,s:1,u:"https://www.facebook.com/share/r/1CV5jtvSg5/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"A6C",c:"OPPO A6C giá học sinh – sinh viên",t:"06/10 09:03",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCtEhWR/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 09:11",v:null,l:0,m:0,s:0,u:"https://www.facebook.com/share/r/1Hhu5Qk4pJ/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"TikTok",sp:"A6C",c:"Hot sale hôm nay – giảm ngay 100K",t:"06/10 11:23",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbXdsEQ6/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 11:31",v:null,l:1,m:0,s:null,u:"https://www.facebook.com/share/r/19c2f4Apjt/"},
+ {p:"Dung – Chí Trung",k:"TikTok",sp:"A6C",c:"OPPO A6C đẹp, rẻ, bền",t:"06/10 08:13",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCVVLXe/"},
+ {p:"Dung – Chí Trung",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 08:18",v:null,l:0,m:1,s:null,u:"https://www.facebook.com/share/v/19P8s44xzC/"},
+ {p:"Trâm – Chí Trung",k:"TikTok",sp:"A6C",c:"OPPO A6C thiết kế trẻ trung",t:"06/10 11:40",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbXLfA7k/"},
+ {p:"Trâm – Chí Trung",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 10:53",v:null,l:11,m:2,s:0,u:"https://www.facebook.com/share/r/1EtyjWGXLr/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"A6C",c:"OPPO A6C – siêu phẩm đáng mua",t:"06/10 10:41",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCo8u5b/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"06/10 10:06",v:null,l:18,m:9,s:6,u:"https://www.facebook.com/share/r/1ZYmxdZPtx/"},
+ {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"A6C",c:"OPPO A6C pin 7000mAh",t:"06/10 08:47",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCpcWE7/"},
+ {p:"Vinh – Huỳnh Mai",k:"Facebook",sp:"A6C",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1CArUQ8RXy/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
+ {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"A6C",c:"(không có mô tả)",t:"06/10 12:22",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbXCasQn/"},
+ {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"A6C",c:"Bài viết Facebook",t:"06/10 09:49",v:null,l:2,m:0,s:null,u:"https://www.facebook.com/share/p/19c2Cnie7F/"},
+ {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCKMsK6/"},
+ {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"06/10 10:26",v:null,l:8,m:7,s:0,u:"https://www.facebook.com/share/r/1DtmUrSNTW/"},
+ {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"A7 Pro",c:"Review OPPO A7 Pro mới ra mắt",t:"06/10 07:20",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbCbPgEy/"},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"05/10 20:08",v:null,l:3,m:3,s:0,u:"https://www.facebook.com/share/r/1EmhRTQt4o/",st:"warn",n:"Đăng từ tối trước",why:"bài Facebook đăng lúc 05/10 20:08, trước ngày báo cáo"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"06/10 11:03",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbXJUKnC/"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"06/10 10:59",v:null,l:9,m:2,s:0,u:"https://www.facebook.com/share/r/1MdEud68Ye/"}
+];
+const P7=[
+ {p:"Ngọc Danh – Nhựt Huy",k:"TikTok",sp:"A6",c:"OPPO A6 8/256GB màu hồng, pin khủng",t:"07/10 08:17",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVrvKdj/"},
+ {p:"Ngọc Danh – Nhựt Huy",k:"Facebook",sp:"A6",c:"Bài Facebook",t:"07/10 07:40",v:null,l:59,m:13,s:21,u:"https://www.facebook.com/share/r/14qrAwhXuNe/"},
+ {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F 5G bắt trọn mọi khoảnh khắc",t:"07/10 09:42",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbV5y6m8/"},
+ {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"Reno16F",c:"Bài viết Facebook",t:"07/10 10:05",v:null,l:0,m:1,s:null,u:"https://www.facebook.com/share/p/14yWBwcBmgE/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"TikTok",sp:"Reno16F",c:"Hành tinh 3D trên OPPO Reno16F",t:"07/10 08:38",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbV96HHf/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"07/10 08:41",v:null,l:2,m:3,s:17,u:"https://www.facebook.com/share/r/19UAFmGk8H/"},
+ {p:"Linh – Thanh Trâm",k:"TikTok",sp:"A7 Pro",c:"Unbox OPPO A7 Pro 5G giá 12tr490",t:"07/10 09:07",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVU4YkP/"},
+ {p:"Linh – Thanh Trâm",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"07/10 09:08",v:null,l:8,m:2,s:0,u:"https://www.facebook.com/share/r/1Hv7suf1pN/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro đẹp chuẩn queen, bền đúng king",t:"07/10 07:25",v:564,l:18,m:0,s:null,u:"https://vt.tiktok.com/ZSbVMTwpK/"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"07/10 07:18",v:null,l:7,m:3,s:6,u:"https://www.facebook.com/share/r/14yJCcEDfQW/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVfhubS/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"07/10 09:26",v:null,l:1,m:0,s:null,u:"https://www.facebook.com/share/r/1CQWzMLKeK/"},
+ {p:"Quỳnh – Nokia Phong",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"không nộp link TikTok và Facebook"},
+ {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVSPAtv/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"07/10 08:39",v:null,l:6,m:1,s:1,u:"https://www.facebook.com/share/r/1GUo3fS5D3/"},
+ {p:"Phương Truyền",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVqdVG8/"},
+ {p:"Phương Truyền",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"07/10 11:06",v:null,l:3,m:0,s:null,u:"https://www.facebook.com/share/v/1BYjeoZmny/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"A7 Pro",c:"Đập hộp OPPO A7 Pro – đẹp xỉu, pin trâu",t:"07/10 07:52",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVhL9C8/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"07/10 08:15",v:null,l:3,m:0,s:0,u:"https://www.facebook.com/share/r/1HgYp1qhfN/"},
+ {p:"Lượm – Thanh Duy",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F giá tầm trung",t:"07/10 08:36",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVAu87D/"},
+ {p:"Lượm – Thanh Duy",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"07/10 10:00",v:null,l:2,m:1,s:0,u:"https://www.facebook.com/share/r/14ruAWNntMt/"},
+ {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"07/10 09:10",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVUKam7/"},
+ {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"Không ghi",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19dtQWeibU/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
+ {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Không ghi",c:"(không có mô tả)",t:"07/10 14:39",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbq8CrSh/"},
+ {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"07/10 14:52",v:null,l:4,m:2,s:0,u:"https://www.facebook.com/share/r/19hFW7tSQi/"},
+ {p:"Thảo Vy – Khang Thịnh",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"không nộp link TikTok và Facebook"},
+ {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Không ghi",c:"Sang xịn mịn",t:"07/10 09:00",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVDYWpd/"},
+ {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"07/10 09:12",v:null,l:5,m:2,s:0,u:"https://www.facebook.com/share/r/19VBgPtVxx/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbqhSx2s/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"07/10 16:13",v:null,l:1,m:0,s:0,u:"https://www.facebook.com/share/r/194i3FXi6e/"},
+ {p:"Thư – Tân Hạnh Phúc",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"không nộp link TikTok và Facebook"},
+ {p:"Dung – Chí Trung",k:"TikTok",sp:"Reno16F",c:"ĐT Chí Trung – Reno16F 5G giảm tiền mặt",t:"07/10 08:25",v:134,l:2,m:0,s:null,u:"https://vt.tiktok.com/ZSbVh7dCR/"},
+ {p:"Dung – Chí Trung",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"07/10 08:28",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/v/1FNxUqqZEt/"},
+ {p:"Trâm – Chí Trung",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F 5G ưu đãi hấp dẫn",t:"07/10 09:30",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVfVrQc/"},
+ {p:"Trâm – Chí Trung",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"07/10 08:41",v:null,l:4,m:0,s:0,u:"https://www.facebook.com/share/r/19Ae2TjscX/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro giá ưu đãi",t:"07/10 10:31",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbV9K78G/"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"07/10 10:08",v:null,l:9,m:2,s:6,u:"https://www.facebook.com/share/r/1TuK8j84Bc/"},
+ {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F 5G giảm 1tr5",t:"07/10 09:29",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVPHPEd/"},
+ {p:"Vinh – Huỳnh Mai",k:"Facebook",sp:"Reno16F",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1BzDPZvyMN/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
+ {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F",t:"07/10 11:50",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVpHyaD/"},
+ {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"Reno16F",c:"Bài viết Facebook",t:"07/10 10:04",v:null,l:2,m:0,s:null,u:"https://www.facebook.com/share/p/1NZ8AHDgAv/"},
+ {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro nét chuẩn queen, bền đúng king",t:"07/10 11:03",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbV4LxC4/"},
+ {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"07/10 12:34",v:null,l:11,m:6,s:0,u:"https://www.facebook.com/share/r/1C7KvcXsYH/"},
+ {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Không ghi",c:"Trả lời khách: 4 củ 3 có đáp ứng không",t:"07/10 06:04",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVrMXWL/"},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"06/10 21:10",v:null,l:5,m:2,s:1,u:"https://www.facebook.com/share/v/19Vgbo7fxa/",st:"warn",n:"Đăng từ tối trước",why:"bài Facebook đăng lúc 06/10 21:10, trước ngày báo cáo"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbVH6rrd/"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"07/10 09:58",v:null,l:8,m:5,s:0,u:"https://www.facebook.com/share/r/1ERHzW9YB5/"}
+];
+const P8=[
+ {p:"Ngọc Danh – Nhựt Huy",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"—",c:"Không có bài TikTok",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có TikTok"},
+ {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"08/10 09:43",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/r/18JRf3KjM2/"},
+ {p:"Như Ý – Tuấn Kiệt",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Linh – Thanh Trâm",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"A7 Pro",c:"Ghé Kim Ngọc Vinh đập hộp A7 Pro",t:"08/10 09:20",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbgNNh92/"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"08/10 09:21",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/r/1D2oM6ro4u/"},
+ {p:"Quỳnh – Nokia Phong",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"Không ghi",c:"Pin yếu mà cứ phải sạc hoài – đổi ngay OPPO",t:"08/10 08:49",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbgd8fEF/"},
+ {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"08/10 08:49",v:null,l:0,m:1,s:0,u:"https://www.facebook.com/share/r/19cvB5JDLa/"},
+ {p:"Phương Truyền",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F 5G đẹp sang, pin trâu",t:"08/10 08:51",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbgR83t4/"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"08/10 08:36",v:null,l:1,m:0,s:0,u:"https://www.facebook.com/share/r/1FTqLNQJZz/"},
+ {p:"Lượm – Thanh Duy",k:"TikTok",sp:"Reno16F",c:"OPPO Reno16F 5G pin lớn, AI",t:"08/10 08:58",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbgLfP7x/"},
+ {p:"Lượm – Thanh Duy",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"08/10 09:16",v:null,l:0,m:0,s:0,u:"https://www.facebook.com/share/r/19P1Xs1zo5/"},
+ {p:"Đinh Thị Yến Nhi",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Thắm – Khánh Hà",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Thảo Vy – Khang Thịnh",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Không ghi",c:"Lì xì tiền mặt 2tr5, trả góp 0%",t:"08/10 08:33",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbge1vv8/"},
+ {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"08/10 08:36",v:null,l:1,m:1,s:0,u:"https://www.facebook.com/share/r/19eyQ6Nqvp/"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Thư – Tân Hạnh Phúc",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Dung – Chí Trung",k:"TikTok",sp:"Reno16F",c:"ĐT Chí Trung – Reno16F 5G giảm tiền mặt",t:"08/10 03:20",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbgFV361/"},
+ {p:"Dung – Chí Trung",k:"Facebook",sp:"Reno16F",c:"Bài Facebook",t:"08/10 09:30",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/v/19SVtVoAkj/"},
+ {p:"Trâm – Chí Trung",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Cẩm Tiên – Anh Tiến",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Vinh – Huỳnh Mai",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Thúy An – Tuấn Ti",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Minh Thư – Anh Tiến",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Trinh Trọng Nghĩa",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Hồng Thúy – Ngọc Anh",k:"—",sp:"—",c:"Chưa nộp link (tính đến 10h sáng 8/10)",t:"—",v:null,l:null,m:null,s:null,u:""}
+];
+const REPORTS={"2026-10-04":P,"2026-10-05":P5,"2026-10-06":P6,"2026-10-07":P7,"2026-10-08":P8};
 // Ghi chú hiển thị dưới tiêu đề theo ngày
-const NOTES={"2026-10-05":"Ngày 5/10: đã có đủ link của 25/25 PG. Số liệu view, like, bình luận và kiểm tra clip cũ đang được bổ sung."};
+const NOTES={"2026-10-05":"5/10–7/10: lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok phần lớn chưa lấy được vì TikTok chặn truy cập tự động.","2026-10-06":"5/10–7/10: lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok phần lớn chưa lấy được vì TikTok chặn truy cập tự động.","2026-10-07":"5/10–7/10: lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok phần lớn chưa lấy được vì TikTok chặn truy cập tự động.","2026-10-08":"Ngày 8/10 đang diễn ra: mới 7/25 PG nộp link (tính đến 10h sáng)."};
 const ALL=Object.entries(REPORTS).flatMap(([d,rows])=>rows.map(r=>({...r,d})));
 const DAYS=Object.keys(REPORTS).sort();
 const dm=d=>{const [y,m,dd]=d.split('-');return +dd+'/'+(+m)};
@@ -301,7 +436,7 @@ function update(){
  dayChips();
  ROWS=ALL.filter(x=>x.d>=FROM&&x.d<=TO);
  const multi=new Set(ROWS.map(x=>x.d)).size>1;
- const notes=[...new Set(ROWS.map(x=>x.d))].filter(d=>NOTES[d]).map(d=>NOTES[d]);$('daynote').textContent=notes.join(' ');$('daynote').hidden=!notes.length;
+ const notes=[...new Set([...new Set(ROWS.map(x=>x.d))].filter(d=>NOTES[d]).map(d=>NOTES[d]))];$('daynote').textContent=notes.join(' ');$('daynote').hidden=!notes.length;
  $('title').textContent=FROM===TO?'Bài đăng ngày '+dmy(FROM):'Bài đăng từ '+dm(FROM)+' đến '+dmy(TO);
  const posts=ROWS.filter(x=>x.k!=="—"&&x.t!=="—");
  const tt=posts.filter(x=>x.k==="TikTok");
@@ -316,7 +451,7 @@ function update(){
 
  $('flags').innerHTML=oldRows.map(x=>`<div class="flag"><strong>${x.p}${multi?' · '+dm(x.d):''}</strong><p>${x.why||x.n}</p><a href="${x.u}" target="_blank" rel="noopener">${x.u.replace('https://www.','')}</a></div>`).join('');
  $('noold').hidden=oldRows.length>0;
- $('noold').textContent=notes.length?'Chưa kiểm tra clip cũ cho ngày 5/10 – sẽ cập nhật khi lấy được dữ liệu từ TikTok/Facebook.':'Không có PG nào dùng clip cũ trong khoảng ngày đã chọn.';
+ $('noold').textContent='Không phát hiện PG nào dùng clip cũ trong khoảng ngày đã chọn (đã đối chiếu ngày đăng thật của từng bài).';
  const grp={};ROWS.filter(x=>x.st==="warn"&&!OLD.has(x.p)).forEach(x=>{(grp[x.n]=grp[x.n]||[]).push(x.p+(multi?' ('+dm(x.d)+')':'')+(x.why?' – '+x.why:''))});
  $('minor').innerHTML=Object.entries(grp).map(([n,l])=>`<li><b>${n}:</b> ${l.join('; ')}.</li>`).join('');
 
@@ -343,7 +478,7 @@ function render(){
   return true});
  $('tb').innerHTML=rows.map(x=>{
   const key=x.d+x.p,first=key!==last;last=key;
-  const st=x.st?`<span class="st ${x.st}">${x.n}</span>`:'<span class="st ok">Bài mới</span>';
+  const st=x.st?`<span class="st ${x.st}">${x.n}</span>`:(x.t==='—'?'<span class="na">Chưa có</span>':'<span class="st ok">Đúng ngày</span>');
   const ch=x.k==="TikTok"?'<span class="pf tt">TikTok</span>':x.k==="Facebook"?'<span class="pf fb">Facebook</span>':'—';
   const c=x.u?`<a href="${x.u}" target="_blank" rel="noopener">${x.c}</a>`:x.c;
   const pg=first?x.p+(multi?`<span class="dchip">Ngày BC ${dm(x.d)}</span>`:''):'';
