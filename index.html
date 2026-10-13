@@ -79,6 +79,8 @@ tr.grp td{border-top:2px solid var(--line)}
 .st.ok{color:var(--good);background:var(--accent-soft)}
 .st.old{color:var(--bad);background:var(--bad-soft)}
 .st.warn{color:var(--warn);background:var(--warn-soft)}
+.st.pend{color:var(--muted);background:var(--bg);border:1px dashed var(--line)}
+.rank li.empty{display:block;grid-template-columns:none;padding:12px 0}
 .cap{max-width:300px;color:var(--muted)}
 .na{color:var(--muted);font-family:var(--f-ui);font-size:.78rem}
 td a{color:var(--fb)}
@@ -575,7 +577,7 @@ const P12=[
  {p:"Linh – Thanh Trâm",k:"Facebook",sp:"Không ghi",c:"Bài Facebook",t:"12/10 09:57",v:null,l:3,m:2,s:0,u:"https://www.facebook.com/share/r/1DfDrT3GYN/"},
  {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"A6C",c:"Lên deal cho khách yêu một cây A6C",t:"11/10 14:57",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbTQ86C3/",st:"warn",n:"Đăng từ hôm trước",why:"clip TikTok nộp cho 12/10 nhưng đăng lúc 13:37 ngày 11/10"},
  {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"11/10 15:49",v:null,l:4,m:3,s:7,u:"https://www.facebook.com/share/r/18eBB1zUDH/",st:"warn",n:"Đăng từ tối trước",why:"bài Facebook đăng lúc 11/10 15:49, trước ngày báo cáo"},
- {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"—",c:"Không có bài TikTok",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có TikTok"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.tt.site/t/ZSbTxPtoU/",st:"pend",n:"Chờ kiểm tra"},
  {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"12/10 08:51",v:null,l:0,m:null,s:null,u:"https://www.facebook.com/share/r/1Heasrtx2P/"},
  {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbT4k1wX/"},
  {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"Reno16F",c:"Bài viết Facebook",t:"12/10 12:52",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/p/1GLzW6FPEp/"},
@@ -589,8 +591,9 @@ const P12=[
  {p:"Lượm – Thanh Duy",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"12/10 10:00",v:null,l:0,m:0,s:0,u:"https://www.facebook.com/share/r/19p54VYKTN/"},
  {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"A7 Pro",c:"(không có mô tả)",t:"12/10 12:33",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbTCHuCV/"},
  {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"12/10 12:36",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/v/1DiCkkBEL4/"},
- {p:"Thắm – Khánh Hà",k:"—",sp:"—",c:"Chưa nộp link (tính đến 14h30 ngày 12/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
- {p:"Thảo Vy – Khang Thịnh",k:"—",sp:"—",c:"Chưa nộp link (tính đến 14h30 ngày 12/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
+ {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbTcadaD/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Dc4M87RKt/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thảo Vy – Khang Thịnh",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"không nộp link TikTok và Facebook"},
  {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Chưa xác định",c:"Không đọc được link – cần kiểm tra lại",t:"—",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbT4JrVK/"},
  {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Chưa xác định",c:"Bài Facebook",t:"12/10 12:52",v:null,l:1,m:1,s:0,u:"https://www.facebook.com/share/r/1Fnu4NjZRT/",st:"warn",n:"Cần kiểm tra",why:"bài Facebook ghi nội dung “Sang xịn mịn” giống clip TikTok ngày 7/10; Facebook trả về 2 ngày đăng khác nhau (24/8 và 12/10) – nên mở xem trực tiếp"},
  {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"A6",c:"OPPO A6",t:"12/10 14:32",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbTvRyxy/"},
@@ -603,18 +606,71 @@ const P12=[
  {p:"Trâm – Chí Trung",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"12/10 08:05",v:null,l:4,m:2,s:0,u:"https://www.facebook.com/share/r/19ciQKbSZW/"},
  {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"A7 Pro",c:"OPPO A7 Pro 5G – siêu phẩm mới",t:"12/10 13:19",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbTbM2xQ/"},
  {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"A7 Pro",c:"Bài Facebook",t:"12/10 14:13",v:null,l:1,m:2,s:6,u:"https://www.facebook.com/share/r/1EvDHQbqRe/"},
- {p:"Vinh – Huỳnh Mai",k:"—",sp:"—",c:"Chưa nộp link (tính đến 14h30 ngày 12/10)",t:"—",v:null,l:null,m:null,s:null,u:""},
- {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"—",c:"Không có bài TikTok",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Thiếu link",why:"không có TikTok"},
+ {p:"Vinh – Huỳnh Mai",k:"—",sp:"—",c:"Không nộp link",t:"—",v:null,l:null,m:null,s:null,u:"",st:"warn",n:"Chưa đăng",why:"không nộp link TikTok và Facebook"},
+ {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbw1MWCn/",st:"pend",n:"Chờ kiểm tra"},
  {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"A6C",c:"Bài viết Facebook",t:"12/10 12:42",v:null,l:0,m:0,s:null,u:"https://www.facebook.com/share/p/1CU9L8gWAu/"},
  {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Không ghi",c:"Cùng em bé đáng yêu mở hộp",t:"12/10 10:59",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbTUK3Kt/"},
  {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Không ghi",c:"Không xem được bài (bài riêng tư hoặc bị ẩn)",t:"—",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/16LRQGQ47HC/",st:"warn",n:"Không xem được",why:"bài Facebook không mở được ở chế độ công khai"},
  {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"A6C",c:"Trả lời khách: OPPO A6C 128GB giá",t:"12/10 05:44",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSb3TnEWg/"},
  {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"A6C",c:"Bài Facebook",t:"12/10 05:52",v:null,l:1,m:0,s:0,u:"https://www.facebook.com/share/r/1HqH68jBs9/"},
- {p:"Hồng Thúy – Ngọc Anh",k:"—",sp:"—",c:"Chưa nộp link (tính đến 14h30 ngày 12/10)",t:"—",v:null,l:null,m:null,s:null,u:""}
+ {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbwYNeHv/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1E3TojcnMH/",st:"pend",n:"Chờ kiểm tra"}
 ];
-const REPORTS={"2026-10-04":P,"2026-10-05":P5,"2026-10-06":P6,"2026-10-07":P7,"2026-10-08":P8,"2026-10-09":P9,"2026-10-10":P10,"2026-10-11":P11,"2026-10-12":P12};
+const P13=[
+ {p:"Ngọc Danh – Nhựt Huy",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbK7cWoN/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Ngọc Danh – Nhựt Huy",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Da6CJcm4F/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Như Quỳnh – Mai Phương",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbE1HPXn/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Như Quỳnh – Mai Phương",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/14qUbyXo6vh/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Như Ý – Tuấn Kiệt",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbK7vuPj/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Như Ý – Tuấn Kiệt",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DnPB7LmKf/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Linh – Thanh Trâm",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKwQ24G/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Linh – Thanh Trâm",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1BxjBdqaj2/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKvLmYf/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Tuấn Kiệt – Thành Nhân",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1CutKED5BK/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.tt.site/t/ZSbKT57oY/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Mỹ Duyên – Kim Ngọc Vinh",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DqFwTyju5/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Quỳnh – Nokia Phong",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKEDULF/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Quỳnh – Nokia Phong",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/19ranQ7tKb/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Mỹ Huyền – Minh Đức",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKTWG96/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Mỹ Huyền – Minh Đức",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1PNKQaoy14/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Phương Truyền",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKoXVy3/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Phương Truyền",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/1LSPTcV3fC/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbK3G2go/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Minh Thư – Trọng Nghĩa",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1C8kGkDBMM/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Lượm – Thanh Duy",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKvc8ja/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Lượm – Thanh Duy",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1HkBGjC9yA/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Đinh Thị Yến Nhi",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbEd6jFk/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Đinh Thị Yến Nhi",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1MjyLsUSjs/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thắm – Khánh Hà",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKTQcNX/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thắm – Khánh Hà",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1FiwkwuyNL/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thảo Vy – Khang Thịnh",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbEFfWSg/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thảo Vy – Khang Thịnh",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/1KsazrYEMi/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Huỳnh – Nam Việt",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKwuLU8/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Huỳnh – Nam Việt",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19Q7sz4TYe/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKc1c7G/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Như Quỳnh – Hồng Ngọc",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1DJZq8HSG9/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thư – Tân Hạnh Phúc",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbEu8VJE/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thư – Tân Hạnh Phúc",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/19jD3btc4p/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Dung – Chí Trung",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbE1NYmc/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Dung – Chí Trung",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1A3J3jw7Nk/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Trâm – Chí Trung",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbEdSmg7/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Trâm – Chí Trung",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1GwDb8K1Rs/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKtYers/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Cẩm Tiên – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1YkXRuFDB1/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Vinh – Huỳnh Mai",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbKExQLN/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Vinh – Huỳnh Mai",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1Dyu4KvkdB/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thúy An – Tuấn Ti",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbENnPaU/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Thúy An – Tuấn Ti",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/p/1DsmwryRar/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Minh Thư – Anh Tiến",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbE8GrYc/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Minh Thư – Anh Tiến",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/194g53aCAc/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Trinh Trọng Nghĩa",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbK3hTav/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Trinh Trọng Nghĩa",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/19YfXyCCog/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"TikTok",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ TikTok",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://vt.tiktok.com/ZSbE1XWGU/",st:"pend",n:"Chờ kiểm tra"},
+ {p:"Hồng Thúy – Ngọc Anh",k:"Facebook",sp:"Chưa xác định",c:"Đã nộp link – chờ lấy dữ liệu từ Facebook",t:"Chưa kiểm tra",v:null,l:null,m:null,s:null,u:"https://www.facebook.com/share/r/1LifKQYQSK/",st:"pend",n:"Chờ kiểm tra"}
+];
+const REPORTS={"2026-10-04":P,"2026-10-05":P5,"2026-10-06":P6,"2026-10-07":P7,"2026-10-08":P8,"2026-10-09":P9,"2026-10-10":P10,"2026-10-11":P11,"2026-10-12":P12,"2026-10-13":P13};
 // Ghi chú hiển thị dưới tiêu đề theo ngày
-const NOTES={"2026-10-05": "Lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-06": "Lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-07": "Lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-08": "Lượt like, bình luận Facebook lấy vào trưa 10/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-09": "Lượt like, bình luận Facebook lấy vào trưa 10/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-10": "Lượt like, bình luận Facebook lấy vào chiều 12/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-11": "Lượt like, bình luận Facebook lấy vào chiều 12/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-12": "Ngày 12/10 đang diễn ra: số liệu tính đến 14h30. Lượt like, bình luận Facebook lấy lúc 14h30 12/10."};
+const NOTES={"2026-10-05": "Lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-06": "Lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-07": "Lượt like, bình luận Facebook lấy vào sáng 8/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-08": "Lượt like, bình luận Facebook lấy vào trưa 10/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-09": "Lượt like, bình luận Facebook lấy vào trưa 10/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-10": "Lượt like, bình luận Facebook lấy vào chiều 12/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-11": "Lượt like, bình luận Facebook lấy vào chiều 12/10. View TikTok chưa lấy được vì TikTok chặn truy cập tự động.", "2026-10-12": "Ngày 12/10: like, bình luận lấy lúc 14h30; 4 bài nộp sau đó (Thắm, Hồng Thúy, TikTok Mỹ Duyên, Thúy An) chưa kiểm tra.", "2026-10-13": "Ngày 13/10: đã có link của 25/25 PG. Ngày đăng, like, bình luận, view và kiểm tra clip cũ chưa làm được vì Chrome đang mất kết nối – sẽ bổ sung sau."};
 const ALL=Object.entries(REPORTS).flatMap(([d,rows])=>rows.map(r=>({...r,d})));
 const DAYS=Object.keys(REPORTS).sort();
 const dm=d=>{const [y,m,dd]=d.split('-');return +dd+'/'+(+m)};
@@ -655,7 +711,7 @@ function update(){
 
  $('flags').innerHTML=oldRows.map(x=>`<div class="flag"><strong>${x.p}${multi?' · '+dm(x.d):''}</strong><p>${x.why||x.n}</p><a href="${x.u}" target="_blank" rel="noopener">${x.u.replace('https://www.','')}</a></div>`).join('');
  $('noold').hidden=oldRows.length>0;
- $('noold').textContent='Không phát hiện PG nào dùng clip cũ trong khoảng ngày đã chọn (đã đối chiếu ngày đăng thật và mã bài của từng link).';
+ const npend=ROWS.filter(x=>x.st==='pend').length; $('noold').textContent=npend&&npend===ROWS.filter(x=>x.k!=='—').length?'Chưa kiểm tra clip cũ cho ngày này – đang chờ lấy dữ liệu từ TikTok/Facebook.':'Không phát hiện PG nào dùng clip cũ trong các bài đã kiểm tra (đối chiếu ngày đăng thật và mã bài của từng link).'+(npend?' Còn '+npend+' bài chưa kiểm tra.':'');
  const grp={};ROWS.filter(x=>x.st==="warn"&&!OLD.has(x.p)).forEach(x=>{(grp[x.n]=grp[x.n]||[]).push(x.p+(multi?' ('+dm(x.d)+')':'')+(x.why?' – '+x.why:''))});
  $('minor').innerHTML=Object.entries(grp).map(([n,l])=>`<li><b>${n}:</b> ${l.join('; ')}.</li>`).join('');
 
@@ -677,7 +733,7 @@ function render(){
  let last='';
  const rows=ROWS.slice().sort((a,b)=>b.d.localeCompare(a.d)).filter(x=>{
   if(q&&!x.p.toLowerCase().includes(q))return false;
-  if(F==='flag')return !!x.st;
+  if(F==='flag')return !!x.st&&x.st!=='pend';
   if(F!=='all')return x.k===F;
   return true});
  $('tb').innerHTML=rows.map(x=>{
